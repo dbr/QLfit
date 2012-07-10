@@ -7,6 +7,12 @@
 #import <AppKit/NSBezierPath.h>
 #import <Foundation/Foundation.h>
 
+#include "stdio.h"
+#include "string.h"
+
+#include "fit_wrap.h"
+
+
 
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options);
 void CancelPreviewGeneration(void *thisInterface, QLPreviewRequestRef preview);
@@ -34,11 +40,19 @@ BOOL whatsamajig(NSGraphicsContext* context)
     
     //This line sets the context back to what it was when we're done
     [NSGraphicsContext restoreGraphicsState];
+    
+    return YES;
 }
 
 
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options)
 {
+    NSURL *urlurl = (NSURL*)url;
+    NSString *urlstring = [urlurl path];
+    const char *urlurlurl = [urlstring cStringUsingEncoding:NSASCIIStringEncoding];
+     
+    this_is_a_test(urlurlurl);
+    
     NSSize canvasSize = NSSizeFromCGSize(CGSizeMake(256.0, 256.0));
     
     CGContextRef cgContext = QLPreviewRequestCreateContext(preview, *(CGSize *)&canvasSize, false, NULL);
