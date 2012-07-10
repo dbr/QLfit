@@ -10,7 +10,7 @@ namespace
 
 typedef std::vector< std::pair<double, double> > latlng_list;
 
-    
+
 double semicircle_to_degree(FIT_SINT32 semi)
 {
     // Value in 32-bit integer, in semicircles, where 2^31 semicircles are equal to 180 degrees
@@ -32,7 +32,7 @@ public:
         for(it = points.begin(); it < points.end(); ++it)
         {
             //std::cerr << (*it).first << ", " << (*it).second << "\n";
-            
+
             if((*it).first == 180 || (*it).second == 180)
             {
                 // Probably invalid point
@@ -42,7 +42,7 @@ public:
                 [arr addObject: [NSArray arrayWithObjects: lat, lon, nil]];
             }
         }
-        
+
         return arr;
     }
 
@@ -51,7 +51,7 @@ public:
         printf("File ID:\n");
         if (mesg.GetType() == FIT_FILE_ACTIVITY)
             printf("   Activity file!\n");
-        
+
         if (mesg.GetType() != FIT_FILE_INVALID)
             printf("   Type: %d\n", mesg.GetType());
         if (mesg.GetManufacturer() != FIT_MANUFACTURER_INVALID)
@@ -72,11 +72,11 @@ public:
         //std::cerr << " Lon: " << semicircle_to_degree(mesg.GetPositionLong()) << std::endl;
 
         points.push_back(
-                         std::pair<float, float>(
-                                                 semicircle_to_degree(mesg.GetPositionLat()),
-                                                 semicircle_to_degree(mesg.GetPositionLong())));
+            std::pair<float, float>(
+                semicircle_to_degree(mesg.GetPositionLat()),
+                semicircle_to_degree(mesg.GetPositionLong())));
     }
-    
+
     void OnMesg(fit::UserProfileMesg& mesg)
     {
         printf("User profile:\n");
@@ -123,7 +123,7 @@ extern "C"
             printf("FIT file integrity failed.\n");
             return nil;
         }
-        
+
         mesgBroadcaster.AddListener((fit::FileIdMesgListener &)listener);
         mesgBroadcaster.AddListener((fit::UserProfileMesgListener &)listener);
         mesgBroadcaster.AddListener((fit::RecordMesgListener &)listener);
@@ -137,9 +137,9 @@ extern "C"
             printf("Exception decoding file: %s\n", e.what());
             return nil;
         }
-        
+
         return listener.get_array();
 
     }
-    
+
 }
