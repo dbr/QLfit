@@ -12,9 +12,11 @@
 		677B9E2315A8B64B001B6B49 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 677B9E2215A8B64B001B6B49 /* CoreServices.framework */; };
 		677B9E2515A8B64B001B6B49 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 677B9E2415A8B64B001B6B49 /* CoreFoundation.framework */; };
 		677B9E2B15A8B64B001B6B49 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 677B9E2915A8B64B001B6B49 /* InfoPlist.strings */; };
-		677B9E2D15A8B64B001B6B49 /* GenerateThumbnailForURL.c in Sources */ = {isa = PBXBuildFile; fileRef = 677B9E2C15A8B64B001B6B49 /* GenerateThumbnailForURL.c */; };
-		677B9E2F15A8B64B001B6B49 /* GeneratePreviewForURL.c in Sources */ = {isa = PBXBuildFile; fileRef = 677B9E2E15A8B64B001B6B49 /* GeneratePreviewForURL.c */; };
+		677B9E2D15A8B64B001B6B49 /* GenerateThumbnailForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 677B9E2C15A8B64B001B6B49 /* GenerateThumbnailForURL.m */; };
 		677B9E3115A8B64B001B6B49 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 677B9E3015A8B64B001B6B49 /* main.c */; };
+		677B9E3815A8B9EF001B6B49 /* GeneratePreviewForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 677B9E2E15A8B64B001B6B49 /* GeneratePreviewForURL.m */; };
+		67F9E5A815AB70D600B98209 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F9E5A715AB70D600B98209 /* Foundation.framework */; };
+		67F9E5AB15AB855D00B98209 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F9E5AA15AB855D00B98209 /* AppKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,12 +25,14 @@
 		677B9E2015A8B64B001B6B49 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		677B9E2215A8B64B001B6B49 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		677B9E2415A8B64B001B6B49 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		677B9E2815A8B64B001B6B49 /* QLFit-Info.plist */ = {isa = PBXFileReference; path = "QLFit-Info.plist"; sourceTree = "<group>"; };
+		677B9E2815A8B64B001B6B49 /* QLFit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QLFit-Info.plist"; sourceTree = "<group>"; };
 		677B9E2A15A8B64B001B6B49 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		677B9E2C15A8B64B001B6B49 /* GenerateThumbnailForURL.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = GenerateThumbnailForURL.c; sourceTree = "<group>"; };
-		677B9E2E15A8B64B001B6B49 /* GeneratePreviewForURL.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = GeneratePreviewForURL.c; sourceTree = "<group>"; };
+		677B9E2C15A8B64B001B6B49 /* GenerateThumbnailForURL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenerateThumbnailForURL.m; sourceTree = "<group>"; };
+		677B9E2E15A8B64B001B6B49 /* GeneratePreviewForURL.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = GeneratePreviewForURL.m; sourceTree = "<group>"; };
 		677B9E3015A8B64B001B6B49 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		677B9E3215A8B64B001B6B49 /* QLFit-Prefix.pch */ = {isa = PBXFileReference; path = "QLFit-Prefix.pch"; sourceTree = "<group>"; };
+		677B9E3215A8B64B001B6B49 /* QLFit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QLFit-Prefix.pch"; sourceTree = "<group>"; };
+		67F9E5A715AB70D600B98209 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		67F9E5AA15AB855D00B98209 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +40,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67F9E5AB15AB855D00B98209 /* AppKit.framework in Frameworks */,
+				67F9E5A815AB70D600B98209 /* Foundation.framework in Frameworks */,
 				677B9E1F15A8B64B001B6B49 /* QuickLook.framework in Frameworks */,
 				677B9E2115A8B64B001B6B49 /* ApplicationServices.framework in Frameworks */,
 				677B9E2315A8B64B001B6B49 /* CoreServices.framework in Frameworks */,
@@ -49,6 +55,8 @@
 		677B9E0E15A8B64B001B6B49 = {
 			isa = PBXGroup;
 			children = (
+				67F9E5AA15AB855D00B98209 /* AppKit.framework */,
+				67F9E5A715AB70D600B98209 /* Foundation.framework */,
 				677B9E2615A8B64B001B6B49 /* QLFit */,
 				677B9E1D15A8B64B001B6B49 /* Frameworks */,
 				677B9E1C15A8B64B001B6B49 /* Products */,
@@ -77,8 +85,8 @@
 		677B9E2615A8B64B001B6B49 /* QLFit */ = {
 			isa = PBXGroup;
 			children = (
-				677B9E2C15A8B64B001B6B49 /* GenerateThumbnailForURL.c */,
-				677B9E2E15A8B64B001B6B49 /* GeneratePreviewForURL.c */,
+				677B9E2C15A8B64B001B6B49 /* GenerateThumbnailForURL.m */,
+				677B9E2E15A8B64B001B6B49 /* GeneratePreviewForURL.m */,
 				677B9E3015A8B64B001B6B49 /* main.c */,
 				677B9E2715A8B64B001B6B49 /* Supporting Files */,
 			);
@@ -178,9 +186,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				677B9E2D15A8B64B001B6B49 /* GenerateThumbnailForURL.c in Sources */,
-				677B9E2F15A8B64B001B6B49 /* GeneratePreviewForURL.c in Sources */,
+				677B9E2D15A8B64B001B6B49 /* GenerateThumbnailForURL.m in Sources */,
 				677B9E3115A8B64B001B6B49 /* main.c in Sources */,
+				677B9E3815A8B9EF001B6B49 /* GeneratePreviewForURL.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,8 +226,10 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_MASTER_OBJECT_FILE = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -238,7 +248,9 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_MASTER_OBJECT_FILE = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -286,6 +298,7 @@
 				677B9E3715A8B64B001B6B49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
