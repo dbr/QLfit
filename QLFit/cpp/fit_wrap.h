@@ -1,1 +1,1 @@
-int this_is_a_test();
+NSArray* get_points_from_fitfile();

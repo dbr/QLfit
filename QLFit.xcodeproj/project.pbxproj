@@ -152,7 +152,7 @@
 		67F9E71015AC626700B98209 /* fit_zones_target_mesg.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 67F9E68415AC626700B98209 /* fit_zones_target_mesg.hpp */; };
 		67F9E71115AC626700B98209 /* fit_zones_target_mesg_listener.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 67F9E68515AC626700B98209 /* fit_zones_target_mesg_listener.hpp */; };
 		67F9E71315AC62C300B98209 /* fit_wrap.h in Headers */ = {isa = PBXBuildFile; fileRef = 67F9E71215AC62C300B98209 /* fit_wrap.h */; };
-		67F9E71515AC63AD00B98209 /* fit_wrap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67F9E71415AC63AD00B98209 /* fit_wrap.cpp */; };
+		67F9E71515AC63AD00B98209 /* fit_wrap.mm in Sources */ = {isa = PBXBuildFile; fileRef = 67F9E71415AC63AD00B98209 /* fit_wrap.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -304,7 +304,7 @@
 		67F9E68415AC626700B98209 /* fit_zones_target_mesg.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fit_zones_target_mesg.hpp; sourceTree = "<group>"; };
 		67F9E68515AC626700B98209 /* fit_zones_target_mesg_listener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fit_zones_target_mesg_listener.hpp; sourceTree = "<group>"; };
 		67F9E71215AC62C300B98209 /* fit_wrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fit_wrap.h; path = cpp/fit_wrap.h; sourceTree = "<group>"; };
-		67F9E71415AC63AD00B98209 /* fit_wrap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = fit_wrap.cpp; path = cpp/fit_wrap.cpp; sourceTree = "<group>"; };
+		67F9E71415AC63AD00B98209 /* fit_wrap.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = fit_wrap.mm; path = cpp/fit_wrap.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -358,7 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				67F9E71215AC62C300B98209 /* fit_wrap.h */,
-				67F9E71415AC63AD00B98209 /* fit_wrap.cpp */,
+				67F9E71415AC63AD00B98209 /* fit_wrap.mm */,
 				67F9E5F515AC626700B98209 /* cpp */,
 				677B9E2C15A8B64B001B6B49 /* GenerateThumbnailForURL.m */,
 				677B9E2E15A8B64B001B6B49 /* GeneratePreviewForURL.m */,
@@ -748,7 +748,7 @@
 				67F9E6E815AC626700B98209 /* fit_mesg_with_event_broadcaster.cpp in Sources */,
 				67F9E6F515AC626700B98209 /* fit_profile.cpp in Sources */,
 				67F9E70615AC626700B98209 /* fit_unicode.cpp in Sources */,
-				67F9E71515AC63AD00B98209 /* fit_wrap.cpp in Sources */,
+				67F9E71515AC63AD00B98209 /* fit_wrap.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

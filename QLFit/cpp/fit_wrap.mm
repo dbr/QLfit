@@ -3,15 +3,49 @@
 
 #include <fstream>
 #include <iostream>
+#include <Foundation/Foundation.h>
 
-float semicircle_to_degree(FIT_SINT32 semi)
+namespace
 {
-    return ((double)semi) * (180.0 / (2<<30));
+
+typedef std::vector< std::pair<double, double> > latlng_list;
+
+    
+double semicircle_to_degree(FIT_SINT32 semi)
+{
+    // Value in 32-bit integer, in semicircles, where 2^31 semicircles are equal to 180 degrees
+    // d = s * (180.0D / 2^31)
+
+    return (double)semi * (180.0 / 2147483648.0);
 }
 
 class Listener : public fit::FileIdMesgListener, public fit::UserProfileMesgListener, public fit::RecordMesgListener
 {
-    public :
+private:
+    latlng_list points;
+
+public:
+    NSArray* get_array()
+    {
+        NSMutableArray *arr = [[NSMutableArray alloc] init];
+        latlng_list::iterator it;
+        for(it = points.begin(); it < points.end(); ++it)
+        {
+            //std::cerr << (*it).first << ", " << (*it).second << "\n";
+            
+            if((*it).first == 180 || (*it).second == 180)
+            {
+                // Probably invalid point
+            } else {
+                NSNumber *lat = [NSNumber numberWithDouble:(*it).first];
+                NSNumber *lon = [NSNumber numberWithDouble:(*it).second];
+                [arr addObject: [NSArray arrayWithObjects: lat, lon, nil]];
+            }
+        }
+        
+        return arr;
+    }
+
     void OnMesg(fit::FileIdMesg& mesg)
     {
         printf("File ID:\n");
@@ -32,10 +66,15 @@ class Listener : public fit::FileIdMesgListener, public fit::UserProfileMesgList
 
     void OnMesg(fit::RecordMesg& mesg)
     {
-        //d = s * (180.0D / 2^31)
-        std::cerr << "Before " << mesg.GetPositionLat() << " and after: " << semicircle_to_degree(mesg.GetPositionLat()) << std::endl;
-        std::cerr << "Lat: " << semicircle_to_degree(mesg.GetPositionLat());
-        std::cerr << " Lon: " << semicircle_to_degree(mesg.GetPositionLong()) << std::endl;
+        //std::cerr << "Before " << mesg.GetPositionLat() << " and after: " << semicircle_to_degree(mesg.GetPositionLat()) << std::endl;
+        //std::cerr << "Before " << mesg.GetPositionLong() << " and after: " << semicircle_to_degree(mesg.GetPositionLong()) << std::endl;
+        //std::cerr << "Lat: " << semicircle_to_degree(mesg.GetPositionLat());
+        //std::cerr << " Lon: " << semicircle_to_degree(mesg.GetPositionLong()) << std::endl;
+
+        points.push_back(
+                         std::pair<float, float>(
+                                                 semicircle_to_degree(mesg.GetPositionLat()),
+                                                 semicircle_to_degree(mesg.GetPositionLong())));
     }
     
     void OnMesg(fit::UserProfileMesg& mesg)
@@ -54,13 +93,13 @@ class Listener : public fit::FileIdMesgListener, public fit::UserProfileMesgList
     }
 };
 
+} // end anonymous namespace
 
 extern "C"
 {
 
-    int this_is_a_test(char* fname)
+    NSArray* get_points_from_fitfile(char* fname)
     {
-        fit::Decode decode;
         fit::MesgBroadcaster mesgBroadcaster;
         Listener listener;
         std::fstream file;
@@ -70,17 +109,19 @@ extern "C"
         if (!file.is_open())
         {
             printf("Error opening file %s\n", fname);
-            return -1;
+            return nil;
         }
         else
         {
             printf("Opened %s perfectly\n", fname);
         }
 
+
+        fit::Decode decode;
         if (!decode.CheckIntegrity(file))
         {
             printf("FIT file integrity failed.\n");
-            return -1;
+            return nil;
         }
         
         mesgBroadcaster.AddListener((fit::FileIdMesgListener &)listener);
@@ -94,8 +135,10 @@ extern "C"
         catch (const fit::RuntimeException& e)
         {
             printf("Exception decoding file: %s\n", e.what());
-            return -1;
+            return nil;
         }
+        
+        return listener.get_array();
 
     }
     
