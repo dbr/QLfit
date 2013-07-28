@@ -80,8 +80,8 @@ BOOL whatsamajig(NSGraphicsContext* context, NSArray* points)
         x = ((x-x_min) / (x_max-x_min));
         y = ((y-y_min) / (y_max-y_min));
 
-        // Correct aspect ratio from 1-0 normalisation (otherwise a
-        // long rectangle course woudl end up a square, as we fit it)
+        // Restore aspect ratio from 1-0 normalisation (otherwise a
+        // long rectangle course would end up a square)
         x = ratio_x*x;
         y = ratio_y*y;
 
@@ -113,11 +113,10 @@ BOOL whatsamajig(NSGraphicsContext* context, NSArray* points)
     }
 
 
-    // Because the last value set is 3.0, all lines are drawn with
-    // a width of 3.0, not just the second line.
+    // Paint line
     [thePath stroke];
 
-    //This line sets the context back to what it was when we're done
+    // Restore original graphics context
     [NSGraphicsContext restoreGraphicsState];
 
     return YES;
